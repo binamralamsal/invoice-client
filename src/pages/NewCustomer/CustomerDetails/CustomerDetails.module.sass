@@ -1,0 +1,28 @@
+@import ../../../styles/helpers
+
+.description
+    & > .field
+        &:not(:last-child)
+            margin-bottom: 32px
+            +d
+                margin-bottom: 24px
+
+.editor
+    &:not(:last-child)
+        margin-bottom: 32px
+        +d
+            margin-bottom: 24px
+
+.group
+    display: flex
+    align-items: flex-end
+    margin: 0 -6px -12px
+    +m
+        display: block
+        margin: 0
+    .field
+        width: 100%
+        margin: 0 6px 12px
+        +m
+            width: 100%
+            margin: 12px 0 0

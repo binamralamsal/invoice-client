@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import "./styles/app.sass";
 import Login from "./pages/Login";
 import Page from "./components/Page";
+import NewCustomer from "./pages/NewCustomer";
 
 function App() {
   return (
@@ -15,8 +16,16 @@ function App() {
           <Route
             path="/"
             element={
-              <Page title="Customers">
+              <Page title="Home">
                 <Home />
+              </Page>
+            }
+          />
+          <Route
+            path="/add-customer"
+            element={
+              <Page title="New Customer">
+                <NewCustomer />
               </Page>
             }
           />

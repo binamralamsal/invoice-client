@@ -15,7 +15,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
@@ -28,7 +28,7 @@ const Login = () => {
     event.preventDefault();
     setError(null);
 
-    const { error } = (await loginUser(email, password)) || {};
+    const { error } = (await loginUser(username, password)) || {};
     if (!error) return;
 
     setError(error);
@@ -45,13 +45,13 @@ const Login = () => {
         <form className={styles.body} action="POST" onSubmit={handleLoginUser}>
           <TextInput
             className={styles.field}
-            name="email"
-            type="email"
-            placeholder="Your email"
+            name="username"
+            type="text"
+            placeholder="Your username"
             required
             icon="mail"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
           <TextInput
             className={styles.field}

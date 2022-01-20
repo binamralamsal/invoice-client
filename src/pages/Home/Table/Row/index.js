@@ -4,16 +4,10 @@ import cn from "classnames";
 import Checkbox from "../../../../components/Checkbox";
 import Control from "./Control";
 
-const Row = ({ item, value, onChange, activeTable, activeId }) => {
+const Row = ({ item, value, onChange }) => {
   return (
     <>
-      <div
-        className={cn(
-          styles.row,
-          { [styles.selected]: activeId === item.id },
-          { [styles.active]: activeTable }
-        )}
-      >
+      <div className={cn(styles.row)}>
         <div className={styles.col}>
           <Checkbox
             className={styles.checkbox}
@@ -24,7 +18,7 @@ const Row = ({ item, value, onChange, activeTable, activeId }) => {
         <div className={styles.col}>
           <div className={styles.item}>
             <div className={styles.details}>
-              <div className={styles.user}>{item.user}</div>
+              <div className={styles.user}>{item.user.name}</div>
               <div className={styles.login}>{item.phoneNumber}</div>
             </div>
           </div>
@@ -34,7 +28,7 @@ const Row = ({ item, value, onChange, activeTable, activeId }) => {
         </div>
         <div className={styles.col}>
           <div className={cn("status-green-dark", styles.purchase)}>
-            {item.gstNo}
+            {item.gstNumber}
           </div>
         </div>
         <div className={styles.col}>

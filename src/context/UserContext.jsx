@@ -7,7 +7,7 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  const loginUser = async (email, password) => {
+  const loginUser = async (username, password) => {
     try {
       const config = {
         headers: {
@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
 
       const { data } = await axios.post(
         "/api/users/login",
-        { email, password },
+        { username, password },
         config
       );
 
@@ -33,7 +33,7 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const registerUser = async (name, email, password) => {
+  const registerUser = async (name, username, password) => {
     try {
       const config = {
         headers: {
@@ -43,7 +43,7 @@ const UserProvider = ({ children }) => {
 
       const { data } = await axios.post(
         "/api/users/",
-        { name, email, password },
+        { name, username, password },
         config
       );
 

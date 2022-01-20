@@ -1,0 +1,56 @@
+@import ../../../styles/helpers
+
+.panel
+    +m
+        display: block
+
+.info
+    margin-right: auto
+    +caption1
+    color: $n4
+    +m
+        margin: 0 0 24px
+    svg
+        margin-right: 12px
+        fill: $n4
+    span
+        color: $n7
+        +dark
+            color: $n1
+
+.btns
+    display: flex
+    align-items: center
+
+.button
+    margin-right: 8px
+    +m
+        flex-grow: 1
+
+.actionsHead
+    width: 48px
+    height: 48px
+    border: 2px solid $n3
+    border-radius: 12px
+    transition: all .2s
+    svg
+        transform: rotate(90deg)
+        fill: $n4
+    &:hover
+        background: $n3
+        svg
+            fill: $n7
+    +dark
+        border-color: $n6
+        background: transparent
+
+.actionsOption
+    &:first-child
+        display: none
+        +t
+            display: flex
+
+.actionsBody
+    right: 0
+    &:before
+        right: 14px

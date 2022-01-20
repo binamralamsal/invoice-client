@@ -3,12 +3,12 @@ import cn from "classnames";
 import styles from "./Panel.module.sass";
 import Icon from "../../../components/Icon";
 
-const Panel = () => {
+const Panel = ({ selectedCustomers }) => {
   return (
     <div className={cn("panel", styles.panel)}>
       <div className={styles.info}>
         <Icon name="check-all" size="24" />
-        <span>2 customers</span> selected
+        <span>{selectedCustomers.length} customers</span> selected
       </div>
       <button className={cn("button-stroke-red", styles.button)}>
         <span>Delete</span>

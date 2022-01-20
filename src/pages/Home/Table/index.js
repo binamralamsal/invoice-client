@@ -1,53 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Table.module.sass";
 import cn from "classnames";
 import Checkbox from "../../../components/Checkbox";
 import Row from "./Row";
 
-const Table = ({ className, activeTable, setActiveTable }) => {
-  const customers = [
-    {
-      id: 0,
-      user: "Chelsie Haley",
-      phoneNumber: "+91-879-879-879",
-      address: "Nepal",
-      gstNo: 23456789,
-      city: "Pokhara",
-      state: "Gandaki",
-    },
-    {
-      id: 1,
-      user: "Filomena Fahey",
-      phoneNumber: "+91-879-879-879",
-      address: "India",
-      gstNo: 3456789,
-      city: "Mumbai",
-      state: "Maharashtra",
-    },
-  ];
-
-  const [chooseAll, setСhooseAll] = useState(false);
-  const [activeId, setActiveId] = useState(customers[0].id);
-
-  const [selectedFilters, setSelectedFilters] = useState([]);
-
+const Table = ({
+  className,
+  selectedCustomers,
+  setSelectedCustomers,
+  customers,
+}) => {
   const handleChange = (id) => {
-    if (selectedFilters.includes(id)) {
-      setSelectedFilters(selectedFilters.filter((x) => x !== id));
+    if (selectedCustomers.includes(id)) {
+      setSelectedCustomers(selectedCustomers.filter((x) => x !== id));
     } else {
-      setSelectedFilters((selectedFilters) => [...selectedFilters, id]);
+      setSelectedCustomers((selectedCustomers) => [...selectedCustomers, id]);
+    }
+  };
+
+  const handleSelectAllCustomers = () => {
+    if (selectedCustomers.length === customers.length) {
+      setSelectedCustomers([]);
+    } else {
+      setSelectedCustomers(customers.map((x) => x._id));
     }
   };
 
   return (
     <div className={cn(styles.wrapper, className)}>
       <div className={cn(styles.table)}>
-        <div className={cn(styles.row, { [styles.active]: activeTable })}>
+        <div className={cn(styles.row)}>
           <div className={styles.col}>
             <Checkbox
               className={styles.checkbox}
-              value={chooseAll}
-              onChange={() => setСhooseAll(!chooseAll)}
+              value={selectedCustomers.length === customers.length}
+              onChange={handleSelectAllCustomers}
             />
           </div>
           <div className={styles.col}>Name</div>
@@ -61,12 +48,8 @@ const Table = ({ className, activeTable, setActiveTable }) => {
           <Row
             item={x}
             key={index}
-            activeTable={activeTable}
-            setActiveTable={setActiveTable}
-            activeId={activeId}
-            setActiveId={setActiveId}
-            value={selectedFilters.includes(x.id)}
-            onChange={() => handleChange(x.id)}
+            value={selectedCustomers.includes(x._id)}
+            onChange={() => handleChange(x._id)}
           />
         ))}
       </div>

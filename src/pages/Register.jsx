@@ -7,7 +7,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
@@ -20,7 +20,7 @@ const Register = () => {
   const handleRegisterUser = async (event) => {
     event.preventDefault();
 
-    await registerUser(name, email, password);
+    await registerUser(name, username, password);
   };
   return (
     <div>
@@ -34,10 +34,10 @@ const Register = () => {
         />
         <input
           type="text"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          name="username"
+          placeholder="Username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
         />
         <input
           type="password"

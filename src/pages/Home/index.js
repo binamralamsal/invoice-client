@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CustomerList.module.sass";
 import cn from "classnames";
 import Card from "../../components/Card";
 import Form from "../../components/Form";
 import Table from "./Table";
 import Panel from "./Panel";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const CustomerList = () => {
   const [search, setSearch] = useState("");
-  const [visible, setVisible] = useState(false);
+
+  const [customers, setCustomers] = useState([]);
+  const [selectedCustomers, setSelectedCustomers] = useState([]);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("userInfo")).token
+            }`,
+          },
+        };
+
+        const { data } = await axios.get("/api/customers/", config);
+
+        setCustomers(data);
+      } catch (error) {
+        console.log(error);
+        localStorage.removeItem("userInfo");
+        window.location.reload();
+      }
+    };
+
+    fetchCustomers();
+  }, []);
 
   const handleSubmit = (e) => {
     alert();
@@ -20,7 +48,7 @@ const CustomerList = () => {
         className={styles.card}
         title="Customer"
         classTitle={cn("title-purple", styles.title)}
-        classCardHead={cn(styles.head, { [styles.hidden]: visible })}
+        classCardHead={styles.head}
         head={
           <>
             <Form
@@ -28,28 +56,34 @@ const CustomerList = () => {
               value={search}
               setValue={setSearch}
               onSubmit={() => handleSubmit()}
-              placeholder="Search by name or email"
+              placeholder="Search by name or username"
               type="text"
               name="search"
               icon="search"
             />
             <div className={styles.nav}>
-              <button className={cn("button-small", styles.button)}>
+              <Link
+                to="/add-customer"
+                className={cn("button-small", styles.button)}
+              >
                 Add Customer
-              </button>
+              </Link>
             </div>
           </>
         }
       >
-        <div className={cn(styles.row, { [styles.flex]: visible })}>
+        <div className={cn(styles.row)}>
           <Table
             className={styles.table}
-            activeTable={visible}
-            setActiveTable={setVisible}
+            customers={customers}
+            selectedCustomers={selectedCustomers}
+            setSelectedCustomers={setSelectedCustomers}
           />
         </div>
       </Card>
-      <Panel />
+      {selectedCustomers.length > 0 && (
+        <Panel selectedCustomers={selectedCustomers} />
+      )}
     </>
   );
 };
