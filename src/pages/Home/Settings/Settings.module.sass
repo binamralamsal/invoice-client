@@ -1,0 +1,38 @@
+@import ../../../styles/helpers
+
+.form
+    width: 100%
+    margin-bottom: 24px
+
+.item
+    &:not(:last-child)
+        margin-bottom: 24px
+
+.label
+    margin-bottom: 12px
+    +base2
+    color: $n4
+
+.checkbox
+    &:not(:last-child)
+        margin-bottom: 12px
+
+.box
+    position: relative
+    .dropdownHead
+        padding-left: 48px
+    svg
+        position: absolute
+        left: 12px
+        bottom: 12px
+        z-index: 10
+        pointer-events: none
+        fill: $s5
+
+.btns
+    display: flex
+    justify-content: flex-end
+    margin-top: 24px
+    .button
+        &:not(:last-child)
+            margin-right: 12px

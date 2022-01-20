@@ -1,0 +1,33 @@
+@import ../../styles/helpers
+
+.form
+    position: relative
+    width: 360px
+
+.input
+    width: 100%
+    height: 40px
+    padding: 0 20px 0 44px
+    background: $n2
+    border-radius: 12px
+    +base1-s
+    color: $n7
+    +dark
+        background: $n6
+        color: $n1
+    &::placeholder
+        color: $shades1
+
+.result
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    width: 44px
+    padding-right: 4px
+    svg
+        fill: $n4
+        transition: fill .2s
+    &:hover
+        svg
+            fill: $p1

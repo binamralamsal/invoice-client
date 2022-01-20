@@ -1,0 +1,34 @@
+[class^="title"]
+    position: relative
+    display: inline-block
+    padding-left: 32px
+    +title1-s
+    &:before
+        content: ""
+        position: absolute
+        top: 50%
+        left: 0
+        width: 16px
+        height: 32px
+        transform: translateY(-50%)
+        border-radius: 4px
+
+.title-red
+    &:before
+        background: $s1
+
+.title-blue
+    &:before
+        background: #B1E5FC
+
+.title-purple
+    &:before
+        background: $s2
+
+.title-yellow
+    &:before
+        background: $s5
+
+.title-green
+    &:before
+        background: $s4

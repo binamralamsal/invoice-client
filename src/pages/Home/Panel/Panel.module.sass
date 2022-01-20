@@ -1,0 +1,25 @@
+@import ../../../styles/helpers
+
+.panel
+    +t
+        display: none
+
+.info
+    margin-right: auto
+    +caption1
+    color: $n4
+    svg
+        margin-right: 12px
+        fill: $n4
+    span
+        color: $n7
+        +dark
+            color: $n1
+
+.btns
+    display: flex
+    align-items: center
+
+.button
+    &:not(:last-child)
+        margin-right: 8px

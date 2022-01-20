@@ -1,0 +1,197 @@
+@import ../../../../styles/helpers
+
+.row
+    display: table-row
+    transition: all .2s
+    +t
+        display: flex
+        align-items: center
+        margin-bottom: 16px
+        padding-bottom: 16px
+        border-bottom: 1px solid $n3
+    +dark
+        border-color: $n6
+    &:hover
+        +rmin(1024)
+            background: $n2
+            +dark
+                background: $n6
+            .control
+                visibility: visible
+                opacity: 1
+            .price
+                background: $n1
+                +dark
+                    background: $n8
+    &:last-child
+        .col:after
+            display: none
+    &.active
+        &:hover
+            background: none
+        .col
+            &:not(:first-child):not(:nth-child(2))
+                display: none
+            &:nth-child(2)
+                &:after
+                    right: 12px
+    &.active.selected
+        background: $n3
+        +dark
+            background: $n6
+            box-shadow: inset 0px -2px 1px rgba(0, 0, 0, 0.05), inset 0px 1px 1px rgba(255, 255, 255, 0.08)
+        .col
+            &:first-child
+                border-radius: 12px 0 0 12px
+            &:nth-child(2)
+                padding-right: 40px
+                border-radius: 0 12px 12px 0
+                &:before
+                    content: ""
+                    position: absolute
+                    top: 50%
+                    right: 12px
+                    width: 24px
+                    height: 24px
+                    transform: translateY(-50%)
+                    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M8.293 17.293a1 1 0 0 0 1.414 1.414l-1.414-1.414zM15 12l.707.707a1 1 0 0 0 0-1.414L15 12zM9.707 5.293a1 1 0 1 0-1.414 1.414l1.414-1.414zm0 13.414l6-6-1.414-1.414-6 6 1.414 1.414zm6-7.414l-6-6-1.414 1.414 6 6 1.414-1.414z' fill='%236f767e'/%3E%3C/svg%3E") no-repeat 50% 50% / 100% auto
+
+.col
+    position: relative
+    display: table-cell
+    vertical-align: top
+    padding: 16px 12px
+    color: $n7
+    +t
+        display: block
+        padding: 0
+    +dark
+        color: $n1
+    &:after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: 0
+        right: 0
+        height: 1px
+        background: $n3
+        +t
+            display: none
+        +dark
+            background: $n6
+    &:first-child
+        width: 56px
+        border-radius: 8px 0 0 8px
+        font-size: 0
+        +t
+            display: none
+        &:after
+            left: 12px
+    &:last-child
+        border-radius: 0 8px 8px 0
+        &:after
+            right: 12px
+    &:nth-child(5)
+        +t
+            margin-left: auto
+            padding-left: 16px
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(6),
+    &:nth-child(7)
+        +t
+            display: none
+
+.item
+    display: flex
+    align-items: center
+    cursor: pointer
+    transition: color .2s
+    &:hover
+        color: $p1
+    .email
+        display: none
+        +t
+            display: block
+            font-size: 13px
+            line-height: 1
+            color: $shades1
+
+.avatar
+    flex-shrink: 0
+    width: 48px
+    height: 48px
+    margin-right: 12px
+    border-radius: 50%
+    overflow: hidden
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.user
+    max-width: 160px
+    margin-bottom: 4px
+
+.login
+    +caption1
+    color: $n4
+    +t
+        display: none
+    +dark
+        color: $shades1
+
+.email
+    +base2
+    color: $n4
+
+.col > .email
+    +t
+        display: none
+
+.lifetime
+    display: inline-flex
+    align-items: center
+    +m
+        flex-direction: column
+        align-items: flex-end
+
+.price
+    display: inline-block
+    padding: 0 8px
+    border-radius: 6px
+    background: $n3
+    transition: backround .2s
+    +dark
+        background: $n6
+
+.balance
+    margin-left: 8px
+    +m
+        margin: 4px 0 0
+
+.control
+    position: absolute
+    top: 50%
+    right: 12px
+    transform: translateY(-50%)
+    visibility: hidden
+    opacity: 0
+    transition: all .2s
+    +d
+        visibility: visible
+        opacity: 1
+    +t
+        display: none
+
+.actions
+    display: none
+    +t
+        display: block
+        position: absolute
+        top: 0
+        right: 0
+        z-index: 2
+    .actionsHead
+        +dark
+            background: none

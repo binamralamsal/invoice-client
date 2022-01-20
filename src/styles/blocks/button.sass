@@ -1,0 +1,112 @@
+[class^="button"]
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  height: 48px
+  padding: 0 20px
+  background: $p1
+  border-radius: 12px
+  +button1
+  text-align: center
+  color: $n1
+  transition: all .2s
+  &:hover
+    background: darken($p1, 10)
+  &.disabled
+    opacity: .5
+    pointer-events: none
+  svg
+    fill: $n1
+    transition: all .2s
+  &:not([class^="button-square"])
+    svg
+      &:first-child
+        margin-right: 8px
+      &:last-child
+        margin-left: 8px
+   
+.button-stroke,
+.button-stroke-red
+  background: none
+  box-shadow: 0 0 0 2px $n3 inset
+  +dark-common
+    box-shadow: 0 0 0 2px $n6 inset
+
+.button-stroke
+  color: $n7
+  svg
+    fill: $n4
+  +dark-common
+    color: $n1
+  &:hover
+    background: none
+    box-shadow: 0 0 0 2px $n7 inset
+    svg
+      fill: $n7
+    +dark-common
+      box-shadow: 0 0 0 2px $n3 inset
+      svg
+        fill: $n1
+  &.active
+    background: $n6
+    box-shadow: 0 0 0 2px $n6 inset
+    svg
+      fill: $n7
+
+.button-stroke-red
+  color: $p3
+  svg
+    fill: $p3
+  &:hover,
+  &.active
+    background: $p3
+    box-shadow: 0 0 0 2px $p3 inset
+    color: $n1
+    svg
+      fill: $n1
+
+.button-white
+  box-shadow: 0 0 0 2px $n3 inset
+  background: $n1
+  color: $n7
+  svg
+    fill: $n7
+  &:hover,
+  &.active
+    box-shadow: 0 0 0 2px $n7 inset
+    background: $n
+    color: $n7
+    svg
+      fill: $n7
+
+.button-small
+  height: 40px
+  padding: 0 16px
+  border-radius: 8px
+  font-size: 13px
+
+.button-square-stroke
+  flex: 0 0 48px
+  width: 48px
+  height: 48px
+  padding: 0
+  background: none
+  box-shadow: 0 0 0 2px $n3 inset
+  transition: all .2s
+  svg
+      fill: $n4
+  +dark-common
+    box-shadow: 0 0 0 2px $n6 inset
+  &:hover
+      background: $p1
+      box-shadow: 0 0 0 2px $p1 inset
+      svg
+          fill: $n1
+
+.button-square-stroke.button-small
+  flex: 0 0 40px
+  width: 40px
+  height: 40px
+
+
+

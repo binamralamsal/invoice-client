@@ -1,0 +1,70 @@
+// common styles
+body
+    min-width: 375px
+    background: $n2
+    +inter
+    +base1-s
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    letter-spacing: -.01em
+    color: $n7
+    +dark-body
+        background: $n8
+        color: $n1
+
+a
+    text-decoration: none
+
+svg,
+img
+    vertical-align: middle
+
+button
+    background: none
+
+button,
+input,
+textarea
+    +inter
+
+.desktop
+    &-hide
+        +d
+            display: none !important
+    &-show
+        display: none !important
+        +d
+            display: block !important
+    &-text-right
+        +d
+            text-align: right
+
+.tablet
+    &-hide
+        +t
+            display: none !important
+    &-show
+        display: none !important
+        +t
+            display: block !important
+            
+.mobile
+    &-hide
+        +m
+            display: none !important
+    &-show
+        display: none !important
+        +m
+            display: block !important
+
+.recharts-rectangle.recharts-tooltip-cursor
+    +dark-common
+        fill: $n6
+
+.recharts-curve.recharts-tooltip-cursor
+    +dark-common
+        stroke: $n5
+
+.recharts-sector
+    +dark-common
+        stroke: $n7

@@ -1,0 +1,104 @@
+@import ../../styles/helpers
+
+.header
+    position: fixed
+    top: 0
+    left: 340px
+    right: 0
+    z-index: 10
+    display: flex
+    align-items: center
+    padding: 24px 40px
+    background: $n1
+    box-shadow: inset 1px 0px 0px $n2, inset 0 -1px 0px $n3
+    +x
+        left: 300px
+        padding: 16px 24px
+    +d
+        left: 96px
+    +m
+        left: 0
+        padding: 16px 24px 16px 16px
+    +dark
+        background: $n7
+        box-shadow: inset 1px 0px 0px $n8, inset 0 -1px 0px $n8
+
+.burger
+    display: none
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 48px
+    height: 48px
+    margin-right: auto
+    +m
+        display: flex
+    &:before,
+    &:after
+        content: ""
+        width: 16px
+        height: 2px
+        border-radius: 2px
+        background: $n4
+    &:before
+        margin-bottom: 6px
+
+.control
+    display: flex
+    align-items: center
+    margin-left: auto
+    +m
+        margin-left: 0
+
+.control .button,
+.control > div,
+.buttonSearch
+    &:not(:last-child)
+        margin-right: 24px
+
+.buttonSearch
+    display: none
+    width: 48px
+    height: 48px
+    +m
+        display: inline-block
+    svg
+        fill: $n4
+        transition: fill .2s
+    &.active
+        svg
+            fill: $n7
+            +dark
+                fill: $n1
+
+.control .button
+    +t
+        display: none
+
+.search
+    +m
+        visibility: hidden
+        opacity: 0
+        transition: all .2s
+        &.visible
+            visibility: visible
+            opacity: 1
+
+.btns
+    display: flex
+    align-items: center
+    margin-left: auto
+    +m
+        margin-left: 0
+
+.link
+    margin-right: 32px
+    +button1
+    color: $n7
+    transition: color .2s
+    +m
+        margin-right: 24px
+    +dark
+        color: $n1
+    &:hover
+        color: $p1
