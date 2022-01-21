@@ -4,7 +4,7 @@ import cn from "classnames";
 import Checkbox from "../../../../components/Checkbox";
 import Control from "./Control";
 
-const Row = ({ item, value, onChange }) => {
+const Row = ({ item, value, onChange, onDeleteUser, refresh }) => {
   return (
     <>
       <div className={cn(styles.row)}>
@@ -38,7 +38,12 @@ const Row = ({ item, value, onChange }) => {
         </div>
         <div className={styles.col}>{item.state}</div>
         <div className={styles.col}>
-          <Control className={styles.control} id={item._id} />
+          <Control
+            className={styles.control}
+            id={item._id}
+            onDeleteUser={onDeleteUser}
+            refresh={refresh}
+          />
         </div>
       </div>
     </>

@@ -9,6 +9,8 @@ const Table = ({
   selectedCustomers,
   setSelectedCustomers,
   customers,
+  onDeleteUser,
+  refresh,
 }) => {
   const handleChange = (id) => {
     if (selectedCustomers.includes(id)) {
@@ -33,7 +35,11 @@ const Table = ({
           <div className={styles.col}>
             <Checkbox
               className={styles.checkbox}
-              value={selectedCustomers.length === customers.length}
+              value={
+                customers.length > 0
+                  ? selectedCustomers.length === customers.length
+                  : false
+              }
               onChange={handleSelectAllCustomers}
             />
           </div>
@@ -50,6 +56,8 @@ const Table = ({
             key={index}
             value={selectedCustomers.includes(x._id)}
             onChange={() => handleChange(x._id)}
+            onDeleteUser={onDeleteUser}
+            refresh={refresh}
           />
         ))}
       </div>

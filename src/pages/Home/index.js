@@ -13,6 +13,7 @@ const Home = () => {
 
   const [customers, setCustomers] = useState([]);
   const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const [refresh, setRefresh] = useState({}); // Just a work around to refresh tables when customer is deleted
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -36,10 +37,27 @@ const Home = () => {
     };
 
     fetchCustomers();
-  }, []);
+  }, [refresh]);
 
   const handleSubmit = (e) => {
     alert();
+  };
+
+  const handleDeleteUser = async (data) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("userInfo")).token
+          }`,
+        },
+        data: data,
+      };
+
+      await axios.delete("/api/customers/", config);
+    } catch (error) {
+      return error;
+    }
   };
 
   return (
@@ -78,11 +96,18 @@ const Home = () => {
             customers={customers}
             selectedCustomers={selectedCustomers}
             setSelectedCustomers={setSelectedCustomers}
+            onDeleteUser={handleDeleteUser}
+            refresh={() => setRefresh({})}
           />
         </div>
       </Card>
       {selectedCustomers.length > 0 && (
-        <Panel selectedCustomers={selectedCustomers} />
+        <Panel
+          selectedCustomers={selectedCustomers}
+          onDeleteUser={() => handleDeleteUser(selectedCustomers)}
+          setSelectedCustomers={setSelectedCustomers}
+          refresh={() => setRefresh({})}
+        />
       )}
     </>
   );

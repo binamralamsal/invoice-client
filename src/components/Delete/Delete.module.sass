@@ -1,0 +1,82 @@
+@import ../../styles/helpers
+
+.title
+    padding-right: 48px
+
+.note
+    margin-top: 24px
+    padding-top: 24px
+    border-top: 1px solid $n3
+    font-weight: 500
+    color: $n4
+    +dark
+        border-color: $n6
+
+.list
+    margin-top: 24px
+
+.item
+    &:not(:last-child)
+        margin-bottom: 8px
+
+.date
+    padding: 24px 12px
+    +d
+        width: 100%
+        text-align: center
+
+.foot
+    margin: 4px 8px 0
+    padding-top: 24px
+    border-top: 1px solid $n3
+    text-align: right
+    +dark
+        border-color: $n6
+    .button
+        &:not(:last-child)
+            margin-right: 8px
+
+.time
+    width: 280px
+    padding: 24px
+    +d
+        width: 100%
+
+.top
+    display: flex
+    align-items: center
+    margin-bottom: 24px
+    padding-bottom: 23px
+    border-bottom: 1px solid $n3
+    +dark
+        border-color: $n6
+
+.subtitle
+    margin-right: auto
+    +title1-s
+
+.close
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    background: $n3
+    font-size: 0
+    svg
+        fill: $n5
+        transition: transform .2s
+    +dark
+        background: $n6
+        svg
+            fill: $n1
+    &:hover
+        svg
+            transform: rotate(90deg)
+
+.btns
+    margin-top: 24px
+    text-align: right
+
+.button
+    background: $p3 !important
+    &:hover
+        background: darken($p3, 10) !important
