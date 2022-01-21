@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./CustomerList.module.sass";
+import styles from "./Home.module.sass";
 import cn from "classnames";
 import Card from "../../components/Card";
 import Form from "../../components/Form";
@@ -8,7 +8,7 @@ import Panel from "./Panel";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const CustomerList = () => {
+const Home = () => {
   const [search, setSearch] = useState("");
 
   const [customers, setCustomers] = useState([]);
@@ -63,7 +63,7 @@ const CustomerList = () => {
             />
             <div className={styles.nav}>
               <Link
-                to="/add-customer"
+                to="/customers/new"
                 className={cn("button-small", styles.button)}
               >
                 Add Customer
@@ -88,4 +88,4 @@ const CustomerList = () => {
   );
 };
 
-export default CustomerList;
+export default Home;

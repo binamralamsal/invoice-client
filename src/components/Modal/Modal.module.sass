@@ -1,0 +1,61 @@
+@import ../../styles/helpers
+
+.modal
+  display: flex
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  padding: 48px
+  background: rgba($n2,.8)
+  opacity: 0
+  animation: showModal .4s forwards
+  overflow: auto
+  z-index: 999
+  +m
+    padding: 16px
+  +dark
+    background: rgba($n6, .9)
+
+@keyframes showModal
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+.outer
+  position: relative
+  width: 100%
+  max-width: 408px
+  margin: auto
+  background: $n1
+  border-radius: 16px
+  box-shadow: 0px 0px 14px -4px rgba(0, 0, 0, 0.05), 0px 32px 48px -8px rgba(0, 0, 0, 0.1)
+  z-index: 2
+  +dark
+    background: $n7
+  +m
+    box-shadow: none
+  & > div
+    padding: 26px 24px 24px
+
+.close
+  position: absolute
+  top: 24px
+  right: 24px
+  width: 36px
+  height: 36px
+  border-radius: 50%
+  background: $n3
+  font-size: 0
+  svg
+    fill: $n5
+    transition: transform .2s
+  +dark
+    background: $n6
+    svg
+      fill: $n1
+  &:hover
+    svg
+      transform: rotate(90deg)

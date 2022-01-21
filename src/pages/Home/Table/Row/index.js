@@ -38,7 +38,7 @@ const Row = ({ item, value, onChange }) => {
         </div>
         <div className={styles.col}>{item.state}</div>
         <div className={styles.col}>
-          <Control className={styles.control} />
+          <Control className={styles.control} id={item._id} />
         </div>
       </div>
     </>

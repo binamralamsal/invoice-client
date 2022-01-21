@@ -7,6 +7,7 @@ import "./styles/app.sass";
 import Login from "./pages/Login";
 import Page from "./components/Page";
 import NewCustomer from "./pages/NewCustomer";
+import EditCustomer from "./pages/EditCustomer";
 
 function App() {
   return (
@@ -22,10 +23,18 @@ function App() {
             }
           />
           <Route
-            path="/add-customer"
+            path="/customers/new"
             element={
               <Page title="New Customer">
                 <NewCustomer />
+              </Page>
+            }
+          />
+          <Route
+            path="/customers/edit/:id"
+            element={
+              <Page title="Edit Customer">
+                <EditCustomer />
               </Page>
             }
           />

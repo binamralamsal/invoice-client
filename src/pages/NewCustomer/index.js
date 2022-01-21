@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./NewProduct.module.sass";
+import styles from "./NewCustomer.module.sass";
 import AuthenticationDetails from "./AuthenticationDetails";
 import TooltipGlodal from "../../components/TooltipGlodal";
 import Panel from "./Panel";
@@ -7,7 +7,7 @@ import CustomerDetails from "./CustomerDetails";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const NewProduct = () => {
+const NewCustomer = () => {
   const navigate = useNavigate();
 
   const [customer, setCustomer] = useState({
@@ -67,4 +67,4 @@ const NewProduct = () => {
   );
 };
 
-export default NewProduct;
+export default NewCustomer;

@@ -2,12 +2,15 @@ import React from "react";
 import styles from "./Control.module.sass";
 import cn from "classnames";
 import Icon from "../../../../../components/Icon";
+import { useNavigate } from "react-router-dom";
 
-const Control = ({ className }) => {
+const Control = ({ className, id }) => {
+  const navigate = useNavigate();
+
   const actions = [
     {
       icon: "edit",
-      action: () => console.log("edit"),
+      action: () => navigate(`/customers/edit/${id}`),
     },
     {
       icon: "trash",

@@ -26,7 +26,7 @@ const Sidebar = ({ className, onClose }) => {
           <Icon name="close" size="24" />
         </button>
         <Link className={styles.logo} to="/" onClick={onClose}>
-          Invoice App
+          Kanchan Bangles
         </Link>
         <div className={styles.menu}>
           {navigation.map((x, index) =>
