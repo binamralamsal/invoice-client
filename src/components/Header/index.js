@@ -6,11 +6,14 @@ const Header = ({ onOpen }) => {
     onOpen();
   };
 
+  let fullName = JSON.parse(localStorage.getItem("userInfo")).name;
+
   return (
     <header className={styles.header}>
       <button className={styles.burger} onClick={() => handleClick()}></button>
       <div className={styles.control}>
-        <User className={styles.user} />
+        <span className={styles.user}>Hello {fullName} ✋</span>
+        <User />
       </div>
       {/* <div className={styles.btns}>
         <Link className={styles.link} to="/sign-in">

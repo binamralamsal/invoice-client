@@ -30,6 +30,7 @@ const AuthenticationDetails = ({ className, customer, setCustomer }) => {
           type="text"
           placeholder="Enter full name"
           tooltip="Maximum 100 characters. No HTML or emoji allowed"
+          maxlength="100"
           value={customer.name}
           onChange={(event) =>
             setCustomer({ ...customer, name: event.target.value })
@@ -42,6 +43,7 @@ const AuthenticationDetails = ({ className, customer, setCustomer }) => {
             label="Username"
             name="username"
             type="text"
+            maxlength="100"
             placeholder="Enter username"
             tooltip="Maximum 100 characters. It must be unique than others"
             value={customer.username}
@@ -56,6 +58,8 @@ const AuthenticationDetails = ({ className, customer, setCustomer }) => {
             type="password"
             label="Password"
             placeholder="Enter password"
+            maxlength="200"
+            minlength="8"
             tooltip="At least 8 characters required"
             value={customer.password}
             onChange={(event) =>

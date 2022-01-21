@@ -24,7 +24,7 @@ const Row = ({ item, value, onChange, onDeleteUser, refresh }) => {
           </div>
         </div>
         <div className={styles.col}>
-          <div className={styles.email}>{item.address}</div>
+          <div className={styles.address}>{item.address}</div>
         </div>
         <div className={styles.col}>
           <div className={cn("status-green-dark", styles.purchase)}>

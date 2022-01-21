@@ -19,6 +19,8 @@ const CustomerDetails = ({ className, customer, setCustomer }) => {
             name="phoneNumber"
             type="number"
             placeholder="Enter Phone Number"
+            min="1000000000"
+            max="9999999999"
             tooltip="Phone number in normal format. (No International format)"
             value={customer.phoneNumber}
             onChange={(event) =>
@@ -32,7 +34,8 @@ const CustomerDetails = ({ className, customer, setCustomer }) => {
             type="text"
             label="Address"
             placeholder="Enter Address"
-            tooltip="Maximum 100 characters. No HTML or emoji allowed"
+            tooltip="Maximum 200 characters. No HTML or emoji allowed"
+            maxlength="200"
             value={customer.address}
             onChange={(event) =>
               setCustomer({ ...customer, address: event.target.value })
@@ -61,6 +64,7 @@ const CustomerDetails = ({ className, customer, setCustomer }) => {
             type="text"
             label="City"
             placeholder="Enter City"
+            maxlength="100"
             tooltip="Maximum 100 characters. No HTML or emoji allowed"
             value={customer.city}
             onChange={(event) =>
@@ -74,6 +78,7 @@ const CustomerDetails = ({ className, customer, setCustomer }) => {
             type="text"
             label="State"
             placeholder="Enter State"
+            maxlength="100"
             tooltip="Maximum 100 characters. No HTML or emoji allowed"
             value={customer.state}
             onChange={(event) =>
