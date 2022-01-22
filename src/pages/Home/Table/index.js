@@ -3,6 +3,8 @@ import styles from "./Table.module.sass";
 import cn from "classnames";
 import Checkbox from "../../../components/Checkbox";
 import Row from "./Row";
+import Icon from "../../../components/Icon";
+import { Link } from "react-router-dom";
 
 const Table = ({
   className,
@@ -11,6 +13,8 @@ const Table = ({
   customers,
   onDeleteUser,
   refresh,
+  pageNumber,
+  totalPages,
 }) => {
   const handleChange = (id) => {
     if (selectedCustomers.includes(id)) {
@@ -60,6 +64,18 @@ const Table = ({
             refresh={refresh}
           />
         ))}
+      </div>
+      <div className={styles.foot}>
+        {+pageNumber > 1 && (
+          <Link className={styles.arrow} to={`/?page=${+pageNumber - 1}`}>
+            <Icon name="arrow-left" size="20" />
+          </Link>
+        )}
+        {+pageNumber < totalPages && (
+          <Link className={styles.arrow} to={`/?page=${+pageNumber + 1}`}>
+            <Icon name="arrow-right" size="20" />
+          </Link>
+        )}
       </div>
     </div>
   );

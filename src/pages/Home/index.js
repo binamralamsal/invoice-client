@@ -6,7 +6,7 @@ import Form from "../../components/Form";
 import Table from "./Table";
 import Panel from "./Panel";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -14,6 +14,11 @@ const Home = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [refresh, setRefresh] = useState({}); // Just a work around to refresh tables when customer is deleted
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const pageNumber = searchParams.get("page") || "1";
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -26,18 +31,22 @@ const Home = () => {
           },
         };
 
-        const { data } = await axios.get("/api/customers/", config);
+        const { data } = await axios.get(
+          `/api/customers/?page=${pageNumber}`,
+          config
+        );
+        setTotalPages(data.total);
 
-        setCustomers(data);
+        setCustomers(data.customers);
       } catch (error) {
         console.log(error);
-        localStorage.removeItem("userInfo");
-        window.location.reload();
+        // localStorage.removeItem("userInfo");
+        // window.location.reload();
       }
     };
 
     fetchCustomers();
-  }, [refresh]);
+  }, [refresh, pageNumber]);
 
   const handleSubmit = (e) => {
     alert();
@@ -55,6 +64,7 @@ const Home = () => {
       };
 
       await axios.delete("/api/customers/", config);
+      navigate("/");
     } catch (error) {
       return error;
     }
@@ -98,6 +108,8 @@ const Home = () => {
             setSelectedCustomers={setSelectedCustomers}
             onDeleteUser={handleDeleteUser}
             refresh={() => setRefresh({})}
+            pageNumber={pageNumber}
+            totalPages={totalPages}
           />
         </div>
       </Card>

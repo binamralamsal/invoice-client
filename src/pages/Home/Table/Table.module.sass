@@ -48,7 +48,7 @@
     &:last-child
         &:after
             right: 12px
-    
+
 .foot
     margin-top: 20px
     text-align: center
@@ -56,3 +56,30 @@
         .loader
             transform: scale(.8)
             margin: 0 18px 0 8px
+
+.foot
+    display: flex
+    justify-content: center
+    margin-top: 24px
+
+.arrow
+    width: 40px
+    height: 40px
+    border: 2px solid $n3
+    border-radius: 50%
+    transition: border-color .2s
+    +dark
+        border-color: transparent
+    svg
+        fill: $n4
+        transition: fill .2s
+    &:hover
+        border-color: $n3
+        svg
+            fill: $n7
+        +dark
+            border-color: $n6
+            svg
+                fill: $n1
+    &:not(:last-child)
+        margin-right: 8px
