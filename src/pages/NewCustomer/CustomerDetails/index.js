@@ -49,9 +49,9 @@ const CustomerDetails = ({ className, customer, setCustomer }) => {
             className={styles.field}
             label="GST Number"
             name="gstNumber"
-            type="number"
+            type="text"
             placeholder="Enter GST Number"
-            tooltip="Enter in 6 digits format"
+            tooltip="Enter in 16 digits format"
             value={customer.gstNumber}
             onChange={(event) =>
               setCustomer({ ...customer, gstNumber: event.target.value })
