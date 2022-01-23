@@ -14,10 +14,11 @@ const Home = () => {
   const [customers, setCustomers] = useState([]);
   const [selectedCustomers, setSelectedCustomers] = useState([]);
   const [refresh, setRefresh] = useState({}); // Just a work around to refresh tables when customer is deleted
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const pageNumber = searchParams.get("page") || "1";
+  const searchQuery = searchParams.get("search") || null;
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
@@ -32,7 +33,9 @@ const Home = () => {
         };
 
         const { data } = await axios.get(
-          `/api/customers/?page=${pageNumber}`,
+          `/api/customers/?page=${pageNumber}${
+            searchQuery && `&search=${searchQuery}`
+          }`,
           config
         );
         setTotalPages(data.total);
@@ -46,10 +49,12 @@ const Home = () => {
     };
 
     fetchCustomers();
-  }, [refresh, pageNumber]);
+  }, [refresh, pageNumber, searchQuery]);
 
-  const handleSubmit = (e) => {
-    alert();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setSearchParams({ search });
   };
 
   const handleDeleteUser = async (data) => {
@@ -83,7 +88,7 @@ const Home = () => {
               className={styles.form}
               value={search}
               setValue={setSearch}
-              onSubmit={() => handleSubmit()}
+              onSubmit={handleSubmit}
               placeholder="Search by name or username"
               type="text"
               name="search"
@@ -110,6 +115,7 @@ const Home = () => {
             refresh={() => setRefresh({})}
             pageNumber={pageNumber}
             totalPages={totalPages}
+            setSearchParams={setSearchParams}
           />
         </div>
       </Card>
