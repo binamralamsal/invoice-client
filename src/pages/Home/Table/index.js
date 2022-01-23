@@ -4,6 +4,7 @@ import cn from "classnames";
 import Checkbox from "../../../components/Checkbox";
 import Row from "./Row";
 import Icon from "../../../components/Icon";
+import { useSearchParams } from "react-router-dom";
 
 const Table = ({
   className,
@@ -14,8 +15,12 @@ const Table = ({
   refresh,
   pageNumber,
   totalPages,
-  setSearchParams,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search") || null;
+
+  const params = searchQuery ? { search: searchQuery } : {};
+
   const handleChange = (id) => {
     if (selectedCustomers.includes(id)) {
       setSelectedCustomers(selectedCustomers.filter((x) => x !== id));
@@ -69,7 +74,9 @@ const Table = ({
         {+pageNumber > 1 && (
           <button
             className={styles.arrow}
-            onClick={() => setSearchParams({ page: +pageNumber - 1 })}
+            onClick={() =>
+              setSearchParams({ ...params, page: +pageNumber - 1 })
+            }
           >
             <Icon name="arrow-left" size="20" />
           </button>
@@ -77,7 +84,9 @@ const Table = ({
         {+pageNumber < totalPages && (
           <button
             className={styles.arrow}
-            onClick={() => setSearchParams({ page: +pageNumber + 1 })}
+            onClick={() =>
+              setSearchParams({ ...params, page: +pageNumber + 1 })
+            }
           >
             <Icon name="arrow-right" size="20" />
           </button>

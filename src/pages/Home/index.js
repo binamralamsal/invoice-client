@@ -22,6 +22,7 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
+    setSelectedCustomers([]);
     const fetchCustomers = async () => {
       try {
         const config = {
@@ -53,7 +54,6 @@ const Home = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     setSearchParams({ search });
   };
 
@@ -115,7 +115,6 @@ const Home = () => {
             refresh={() => setRefresh({})}
             pageNumber={pageNumber}
             totalPages={totalPages}
-            setSearchParams={setSearchParams}
           />
         </div>
       </Card>
